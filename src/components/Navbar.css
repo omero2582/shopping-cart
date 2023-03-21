@@ -19,17 +19,17 @@
   font-weight: 600;
 }
 
-ul{
+.navbar ul{
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
 
-li{
+.navbar li{
   width: 120px;
 }
 
-a{
+.navbar a{
   text-decoration: none;
   color: aliceblue;
   width: 100%;
@@ -41,7 +41,7 @@ a{
   
 }
 
-li:hover{
+.navbar li:hover{
   background-color:hsl(180, 100%, 25%);
   cursor: pointer;
 }
