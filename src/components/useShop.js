@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import requestItem from './requestItem';
+//fetch all items
 const useShop = () => {
   const [shop, setShop] = useState([]);
   useEffect(() => {

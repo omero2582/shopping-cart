@@ -35,19 +35,23 @@ export function Shop({cartActions}) {
   const [searchParams, setSearchParams] = useSearchParams('');
   const filter = searchParams.get('category');
   const sort = searchParams.get('sort');
+  // fetch shop
   const items = useShop();  
   console.log('SHOP');
 
+  //filter first
   const filteredItems = useMemo(() => {
     return filterItems(items, filter);
   }, [items, filter]);
   
+  //then sort
   let processedItems = useMemo( () => {
     return sortItems(filteredItems, sort);
   }, [filteredItems, sort]);
 
-  const handleSelect = (e) => {
+  const handleSort = (e) => {
     setSearchParams({...Object.fromEntries(searchParams.entries()), sort: e.target.value})
+    // preserves all other search params
   };
 
   return(
@@ -57,11 +61,12 @@ export function Shop({cartActions}) {
           <li onClick={() => setSearchParams({})}>All</li>
           <li onClick={() => setSearchParams({category: 'ad'})}>AD</li>
           <li onClick={() => setSearchParams({category: 'ap'})}>AP</li>
+          {/* Clears all other search params. Intended */}
         </ul>
       </div>
       <div className="sort">
         <select value={sort || 'price-desc'}  // sets price-desc as default, without changing the url
-        onChange={handleSelect}>
+        onChange={handleSort}>
           <option value='price-desc'>Price: Low to High</option>
           <option value='price-asc'>Price: High to Low</option>
           <option value='name-asc'>Name: A to Z</option>
