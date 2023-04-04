@@ -1,4 +1,4 @@
-.all-products{
+.all-items{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   
@@ -35,7 +35,7 @@
 }
 
 .item button{
-  font-size: 1.2rem;
-  width: 80px;
+  font-size: 1.05rem;
+  width: 125px;
   height: 30px;
 }

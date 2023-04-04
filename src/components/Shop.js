@@ -1,62 +1,50 @@
-import React, { useEffect, useState, useMemo } from "react";
-import requestItem from "./requestItem";
-import Item from './Item'
+import React, { useMemo } from "react";
+import ShopItem from './ShopItem'
 import './Shop.css';
 import { useSearchParams } from "react-router-dom";
+import useShop from "./useShop";
 
-const sortProducts = (products, sort) => {
+const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
   switch(sort) {
     case 'name-asc':
-      return [...products].sort((a, b) =>  a.name.localeCompare(b.name));
+      return [...items].sort((a, b) =>  a.name.localeCompare(b.name));
     case 'name-desc':
-      return [...products].sort((a, b) =>  b.name.localeCompare(a.name));
+      return [...items].sort((a, b) =>  b.name.localeCompare(a.name));
     case 'price-asc':
-      return [...products].sort((a, b) =>  b.priceTotal - a.priceTotal);
+      return [...items].sort((a, b) =>  b.priceTotal - a.priceTotal);
     case 'price-desc':
     default:
-      return [...products].sort((a, b) =>  a.priceTotal - b.priceTotal);
+      return [...items].sort((a, b) =>  a.priceTotal - b.priceTotal);
   }
 }
 
-const filterProducts = (products, filter) => {
+const filterItems = (items, filter) => {
   console.log(`filter ${filter}`);
-  if(!filter) return [...products];
+  if(!filter) return [...items];
   if(filter === 'ad'){
-    return products.filter(p => p.categories.includes('Damage'));
+    return items.filter(p => p.categories.includes('Damage'));
   }else if(filter ==='ap'){
-    return products.filter(p => p.categories.includes('SpellDamage'));
+    return items.filter(p => p.categories.includes('SpellDamage'));
   }else {
-    return [...products];
+    return [...items];
   }
 };
 
-export function Shop() {
-  const [products, setProducts] = useState([]);
+export function Shop({cartActions}) {
   const [searchParams, setSearchParams] = useSearchParams('');
   const filter = searchParams.get('category');
   const sort = searchParams.get('sort');
-  let processedProducts = products;
+  const items = useShop();  
+  console.log('SHOP');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const itemData = await requestItem.processAllData();
-      const trueItems = itemData.filter(i => i.inStore === true && i.requiredChampion === '');
-      // removes a lot of effects coded as items
-      // and champ-specifc items like kalista blackspear or fiddle trinket
-      // if we want, we can further remove trinkets with && !(i.categories.includes('Trinket'))
-      setProducts(trueItems);
-    }
-    fetchData();
-  }, []);
-
-  const filteredProducts = useMemo(() => {
-    return filterProducts(products, filter);
-  }, [products, filter]);
+  const filteredItems = useMemo(() => {
+    return filterItems(items, filter);
+  }, [items, filter]);
   
-  processedProducts = useMemo( () => {
-    return sortProducts(filteredProducts, sort);
-  }, [filteredProducts, sort]);
+  let processedItems = useMemo( () => {
+    return sortItems(filteredItems, sort);
+  }, [filteredItems, sort]);
 
   const handleSelect = (e) => {
     setSearchParams({...Object.fromEntries(searchParams.entries()), sort: e.target.value})
@@ -80,8 +68,8 @@ export function Shop() {
           <option value='name-desc'>Name: Z to A</option>
         </select>
       </div>
-      <div className="all-products">
-        {processedProducts.map(p => <Item {...p} key={p.id}/>)}
+      <div className="all-items">
+        {processedItems.map(i => <ShopItem item={i} key={i.id} {...cartActions}/>)}
       </div>
     </div>
   )
