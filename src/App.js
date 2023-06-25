@@ -1,10 +1,10 @@
 import { Navbar } from "./components/Navbar";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { Home } from "./components/Home";
-import { Cart } from "./components/Cart";
-import { Shop } from "./components/Shop";
+import { Home } from "./pages/Home";
+import { Cart } from "./pages/Cart";
+import { Shop } from "./pages/Shop";
 import { useState } from "react";
-import ItemDetail from "./components/ItemDetail";
+import ItemDetail from "./pages/ItemDetail";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -62,7 +62,7 @@ function App() {
   }
   
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/shopping-cart">
       <Navbar cart={cart}></Navbar>
       <Routes>
         <Route path="/" element={<Home/>}/>

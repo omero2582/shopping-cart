@@ -1,19 +1,29 @@
+:root {
+  --navbar-color: #50c2fd;
+  --navbar-hover: #FD8B50; 
+  --navbar-text: white;
+  /* --navbar-color: #ff7f50; */
+  /* --navbar-hover: hsl(295, 70%, 38%); */
+  /* --navbar-hover: #fa0192; */
+  /* --navbar-hover: #FD50C2; */
+}
+
 .navbar{
-  background-color: coral;
+  background-color: var(--navbar-color);
   display: grid;
   justify-content: space-around;
   grid-auto-flow: column;
 }
 
 .navbar .logo > *{
-  margin: 18px 0px;
+  margin: 14px 8px;
   /*h1's normal margin top and bottom is 27px*/
 }
 
 .navbar .right{
   display: grid;
-  justify-content: space-around;
-  align-items: stretch;
+  /* justify-content: space-around;
+  align-items: stretch; */
   grid-auto-flow: column;
   font-size: 1.25rem;
   font-weight: 600;
@@ -26,15 +36,16 @@
 }
 
 .navbar li{
-  width: 120px;
+  /* width: 120px; */
+  padding: 0px 30px;
 }
 
 .navbar a{
   text-decoration: none;
-  color: aliceblue;
+  color: var(--navbar-text);
   width: 100%;
   height: 100%;
-  border: 3px solid green;
+  /* border: 3px solid green; */
   display: grid;
   place-content: center;
   box-sizing: border-box;
@@ -42,6 +53,6 @@
 }
 
 .navbar li:hover{
-  background-color:hsl(180, 100%, 25%);
+  background-color:var(--navbar-hover);
   cursor: pointer;
 }

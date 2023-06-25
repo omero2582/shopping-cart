@@ -1,0 +1,44 @@
+.ItemDetail {
+  margin-top: 40px;
+  display: grid;
+  justify-content: center;
+  /* align-items: center; */
+  grid-auto-flow: column;
+  grid-template-columns: minmax(0, 96px);
+  /* gap: 20px; */
+}
+
+.ItemDetail img {
+  max-width: 96px;
+  width: 100%;
+  height: auto;
+}
+
+.ItemDetail .price {
+  font-size: 1.3rem;
+}
+
+.ItemDetail .details{
+  display: grid;
+  justify-items: center;
+  max-width: 400px;
+  margin-left: 20px;
+  gap: 5px;
+}
+
+.ItemDetail .details *{
+  margin: 0px;
+  padding: 0px;
+}
+
+.ItemDetail .details .quantity {
+  max-width: 45px;
+  font-size: 1.1rem;
+  justify-self: stretch;
+}
+
+
+.ItemDetail .details button {
+  font-size: 1.1rem;
+  padding: 4px;
+}
