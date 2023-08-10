@@ -91,9 +91,14 @@ export function Shop({cartActions}) {
         </section>
       </section>
       <section className={`all-items ${showDescription ? 'show-description' : ''}`}>
-        <h2 className="visually-hidden">All Items</h2>
-        {processedItems.map(i => 
-          <ShopItem item={i} key={i.id} {...cartActions} showDescription={showDescription}/>)}
+        {items.length === 0 ?
+        <h2 className="error">ERROR loading shop items</h2>
+        :<>
+          <h2 className="visually-hidden">All Items</h2>
+          {processedItems.map(i => 
+            <ShopItem item={i} key={i.id} {...cartActions} showDescription={showDescription}/>)}
+        </>}
+        
       </section>
     </main>
   )

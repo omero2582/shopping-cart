@@ -1,8 +1,18 @@
+.Shop .error{
+  background-color: salmon;
+  font-size: 1.6rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  margin: 0px;
+}
+
 .all-items{
   grid-area: items;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   /* padding: 0px 5px; */
+  /**/
 }
 
 .all-items.show-description{
