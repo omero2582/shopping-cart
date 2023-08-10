@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 export default function ShopItem ({item, showDescription, handleAdd}) {
-  const {name, priceTotal ,img, id, description} = item;
+  //const {name, priceTotal ,img, id, description} = item;
+  const {title, price, image, id, description} = item;
  
   return (
     <div className="item">
       <Link to={`/shop/${id}`}>
-        <img alt={name} src={img} title={description}></img>
+        <img alt={title} src={image} title={description}></img>
       </Link>
       <Link to={`/shop/${id}`}>
-        <h3 className='name' title={description}>{name}</h3>
+        <h3 className='title' title={description}>{title}</h3>
       </Link>
-      <p className='price'>{priceTotal}g</p>
+      <p className='price'>${price}</p>
       {/* <button onClick={() => handleAdd(item, 1)}>Add to Cart</button> */}
       {showDescription && <p className='description'>{description}</p>}
     </div>

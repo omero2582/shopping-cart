@@ -2,9 +2,9 @@
 
 import {useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
-import useShop from "../components/useShop";
+import useShop from "../../components/useShop/useShop";
 import validator from "validator";
-import './styles/ItemDetail.css'
+import './ItemDetail.css'
 
 export default function ItemDetail ({handleAdd}) {
   // const location = useLocation();
@@ -23,7 +23,8 @@ export default function ItemDetail ({handleAdd}) {
   if (!item){
     return <h1>Error</h1>
   }
-  const {name, priceTotal ,img, description} = item;
+  // const {name, priceTotal ,img, description} = item;
+  const {title, price ,image, description} = item;
   console.log(item);
   const handleQuantityInput = (e) => {
     const number = (Number(e.target.value));
@@ -31,10 +32,10 @@ export default function ItemDetail ({handleAdd}) {
   }
   return (
     <section className="ItemDetail">
-      <img alt={name} src={img}></img>
+      <img alt={title} src={image}></img>
       <div className="details">
-        <h2 className='name'>{name}</h2>
-        <p className='price'>{priceTotal}g</p>
+        <h2 className='name'>{title}</h2>
+        <p className='price'>${price}</p>
         <div className="buy-area">
           <label>
             <input className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>

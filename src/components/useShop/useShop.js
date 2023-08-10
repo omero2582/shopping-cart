@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import requestItem from './requestItem';
+import requestLeague from './requestLeague';
 //fetch all items
 const useShop = () => {
   const [items, setItems] = useState([]);
@@ -8,13 +8,14 @@ const useShop = () => {
   useEffect(() => {
     console.log('fetching items');
     const fetchData = async () => {
-    const itemData = await requestItem.processAllData();
+    // const itemData = await requestLeague.processAllData();
+    const response = await fetch('https://fakestoreapi.com/products');
+    if (response.status >= 400) {
+      throw new Error("server error");
+    }
+    const itemData = await response.json();
 
-    const trueItems = itemData.filter(i => i.inStore === true && i.requiredChampion === '');
-    // removes a lot of effects coded as items
-    // and champ-specifc items like kalista blackspear or fiddle trinket
-    // if we want, we can further remove trinkets with && !(i.categories.includes('Trinket'))
-    setItems(trueItems);
+    setItems(itemData);
     setIsLoading(false);
     }
     fetchData().catch(e => setError(e));

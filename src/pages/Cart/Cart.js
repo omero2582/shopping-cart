@@ -1,6 +1,6 @@
 import React from "react";
-import { CartItem } from "../components/CartItem";
-import './styles/Cart.css'
+import { CartItem } from "./CartItem";
+import './Cart.css'
 import { Link } from "react-router-dom";
 export function Cart({cart, handleDelete}) {
   // cart = cart.map(item => {
@@ -24,7 +24,7 @@ export function Cart({cart, handleDelete}) {
         <h2 className="visually-hidden">Cart Items</h2>
         {cart.map(item => <CartItem key={item.id} item={item} handleDelete={handleDelete}/>)}
         </section>
-        <h2>Subtotal: {subtotal}</h2>
+        <h2>Subtotal: ${subtotal}</h2>
       </>)
     }
       

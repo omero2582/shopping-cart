@@ -1,34 +1,41 @@
 import React, { useMemo, useState } from "react";
-import ShopItem from '../components/ShopItem'
-import './styles/Shop.css';
+import ShopItem from './ShopItem'
+import './Shop.css';
 import { useSearchParams } from "react-router-dom";
-import useShop from "../components/useShop";
+import useShop from "../../components/useShop/useShop";
 
 const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
   switch(sort) {
     case 'name-asc':
-      return [...items].sort((a, b) =>  a.name.localeCompare(b.name));
+      return [...items].sort((a, b) =>  a.title.localeCompare(b.title));
     case 'name-desc':
-      return [...items].sort((a, b) =>  b.name.localeCompare(a.name));
+      return [...items].sort((a, b) =>  b.title.localeCompare(a.title));
     case 'price-desc':
-      return [...items].sort((a, b) =>  b.priceTotal - a.priceTotal);
+      return [...items].sort((a, b) =>  b.price - a.price);
     case 'price-asc':
     default:
-      return [...items].sort((a, b) =>  a.priceTotal - b.priceTotal);
+      return [...items].sort((a, b) =>  a.price - b.price);
   }
 }
 
 const filterItems = (items, filter) => {
+  /* 
+  "electronics",
+  "jewelery",
+  "men's clothing",
+  "women's clothing"*/
   console.log(`filter ${filter}`);
-  switch(filter){
-    case 'ad':
-      return items.filter(p => p.categories.includes('Damage'));
-    case 'ap':
-      return items.filter(p => p.categories.includes('SpellDamage'));
-    default:
-      return [...items];
-  }
+  if (!filter) return items;
+  return items.filter(p => p.category === filter);
+  // switch(filter){
+  //   case 'ad':
+  //     return items.filter(p => p.categories.includes('Damage'));
+  //   case 'ap':
+  //     return items.filter(p => p.categories.includes('SpellDamage'));
+  //   default:
+  //     return [...items];
+  // }
 };
 
 export function Shop({cartActions}) {
@@ -65,8 +72,10 @@ export function Shop({cartActions}) {
         <h3 className="title">Categories</h3>
         <ul>
           <li onClick={() => setSearchParams({})}>All</li>
-          <li onClick={() => setSearchParams({category: 'ad'})}>Attack Damage</li>
-          <li onClick={() => setSearchParams({category: 'ap'})}>Ability Power</li>
+          <li onClick={() => setSearchParams({category: "men's clothing"})}>Men's Clothing</li>
+          <li onClick={() => setSearchParams({category: "women's clothing"})}>Women's Clothing</li>
+          <li onClick={() => setSearchParams({category: 'electronics'})}>Electronics</li>
+          <li onClick={() => setSearchParams({category: 'jewelery'})}>Jewelery</li>
           {/* Clears all other search params. Intended */}
         </ul>
       </section>
@@ -87,7 +96,7 @@ export function Shop({cartActions}) {
             id="toggle-description"
             checked={showDescription}
             onChange={handleToggleDescription}></input>
-          <label for="toggle-description">Descriptions</label>
+          <label htmlFor="toggle-description">Descriptions</label>
         </section>
       </section>
       <section className={`all-items ${showDescription ? 'show-description' : ''}`}>

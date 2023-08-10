@@ -1,6 +1,6 @@
 import parse, {domToReact} from 'html-react-parser';
 import React from 'react';
-const requestItem = () => {
+const requestLeague = () => {
   const allDataUrl = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json';
   const iconsBaseUrl = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d'
 
@@ -43,7 +43,11 @@ const requestItem = () => {
         // then appends to a different base url
       }
     });
-    return simplified;
+    const trueItems = simplified.filter(i => i.inStore === true && i.requiredChampion === '');
+    // removes a lot of effects coded as items
+    // and champ-specifc items like kalista blackspear or fiddle trinket
+    // if we want, we can further remove trinkets with && !(i.categories.includes('Trinket'))
+    return trueItems;
   }
 
   return {
@@ -51,7 +55,7 @@ const requestItem = () => {
   }
 }
 
-export default requestItem();
+export default requestLeague();
 
 // In case I need,
 // code below finds all the html tags that are used. includes

@@ -1,6 +1,8 @@
 :root {
-  --navbar-color: #50c2fd;
-  --navbar-hover: #FD8B50; 
+  /* --navbar-color: #50c2fd; */
+  --navbar-color: black;
+  /* --navbar-hover: #FD8B50;  */
+  --navbar-hover: hsl(0, 0%, 20%);
   --navbar-text: white;
   /* --navbar-color: #ff7f50; */
   /* --navbar-hover: hsl(295, 70%, 38%); */

@@ -1,10 +1,10 @@
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/Navbar/Navbar";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Cart } from "./pages/Cart";
-import { Shop } from "./pages/Shop";
+import { Home } from "./pages/Home/Home";
+import { Cart } from "./pages/Cart/Cart";
+import { Shop } from "./pages/Shop/Shop";
 import { useState } from "react";
-import ItemDetail from "./pages/ItemDetail";
+import ItemDetail from "./pages/ItemDetail/ItemDetail";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -19,16 +19,18 @@ function App() {
         return;
       }
 
-      console.log(`Adding ${quantity} ${item.name} to cart ${typeof quantity}`);
+      console.log(`Adding ${quantity} ${item.title} to cart ${typeof quantity}`);
       setCart(c => {
         //if item is already in the cart, simply add to quanitty
         const itemAlreadyInCart = c.find(i => i.id === item.id);
         if(itemAlreadyInCart){
           return c.map(i => {
             if (item.id === i.id){
+              const newQuantity = i.quantity + quantity;
               return {
                 ...i,
-                quantity: i.quantity + quantity,
+                quantity: newQuantity,
+                total: i.price * newQuantity,
               }
             }else return i;
           });
@@ -43,6 +45,7 @@ function App() {
           }
         ]
       })  //setCart
+      console.log(cart);
     },
     // Change the quanity of a an item, given an id & quantity
     handleEditQuantity: (id, quantity) => {   
