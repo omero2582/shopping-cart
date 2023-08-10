@@ -37,7 +37,7 @@ export function Shop({cartActions}) {
   const sort = searchParams.get('sort') || 'price-asc';
   const [showDescription, setShowDescription] = useState(true) 
   // fetch shop
-  const { items } = useShop();
+  const { items, error, isLoading } = useShop();
 
   //filter first
   const filteredItems = useMemo(() => {
@@ -91,9 +91,15 @@ export function Shop({cartActions}) {
         </section>
       </section>
       <section className={`all-items ${showDescription ? 'show-description' : ''}`}>
-        <h2 className="visually-hidden">All Items</h2>
-        {processedItems.map(i => 
-          <ShopItem item={i} key={i.id} {...cartActions} showDescription={showDescription}/>)}
+        {error ? <h2 className="error">ERROR loading shop items</h2>
+        : isLoading ? <h2>Loading...</h2>
+        :
+          <>
+            <h2 className="visually-hidden">All Items</h2>
+            {processedItems.map(i => 
+              <ShopItem item={i} key={i.id} {...cartActions} showDescription={showDescription}/>)}
+          </>}
+        
       </section>
     </main>
   )

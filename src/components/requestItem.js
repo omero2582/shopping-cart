@@ -6,6 +6,9 @@ const requestItem = () => {
 
   const fetchAllItemData = async () => {
     const response = await fetch(allDataUrl);
+    if (response.status >= 400) {
+      throw new Error("server error");
+    }
     const data = await response.json();
     return data;
   }

@@ -4,25 +4,22 @@ import requestItem from './requestItem';
 const useShop = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
     console.log('fetching items');
     const fetchData = async () => {
-      let itemData;
-      try {
-        itemData = await requestItem.processAllData();
-      } catch (error) {
-        itemData = []
-      }
-      const trueItems = itemData.filter(i => i.inStore === true && i.requiredChampion === '');
-      // removes a lot of effects coded as items
-      // and champ-specifc items like kalista blackspear or fiddle trinket
-      // if we want, we can further remove trinkets with && !(i.categories.includes('Trinket'))
-      setItems(trueItems);
-      setIsLoading(false);
+    const itemData = await requestItem.processAllData();
+
+    const trueItems = itemData.filter(i => i.inStore === true && i.requiredChampion === '');
+    // removes a lot of effects coded as items
+    // and champ-specifc items like kalista blackspear or fiddle trinket
+    // if we want, we can further remove trinkets with && !(i.categories.includes('Trinket'))
+    setItems(trueItems);
+    setIsLoading(false);
     }
-    fetchData();
+    fetchData().catch(e => setError(e));
   }, []);
-  return {items, isLoading};
+  return {error, items, isLoading};
 }
 
 export default useShop
