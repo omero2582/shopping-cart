@@ -20,22 +20,9 @@ const sortItems = (items, sort) => {
 }
 
 const filterItems = (items, filter) => {
-  /* 
-  "electronics",
-  "jewelery",
-  "men's clothing",
-  "women's clothing"*/
   console.log(`filter ${filter}`);
   if (!filter) return items;
   return items.filter(p => p.category === filter);
-  // switch(filter){
-  //   case 'ad':
-  //     return items.filter(p => p.categories.includes('Damage'));
-  //   case 'ap':
-  //     return items.filter(p => p.categories.includes('SpellDamage'));
-  //   default:
-  //     return [...items];
-  // }
 };
 
 export function Shop({cartActions}) {
@@ -61,8 +48,8 @@ export function Shop({cartActions}) {
     // preserves all other search params
   };
 
-  const handleToggleDescription = (event) => {
-    setShowDescription(event.target.checked);
+  const handleToggleDescription = (e) => {
+    setShowDescription(e.target.checked);
   };
 
   return(

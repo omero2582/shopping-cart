@@ -5,34 +5,35 @@ import { Cart } from "./pages/Cart/Cart";
 import { Shop } from "./pages/Shop/Shop";
 import { useState } from "react";
 import ItemDetail from "./pages/ItemDetail/ItemDetail";
+import { ShopProvider } from "./context/shopContext";
 
 function App() {
   const [cart, setCart] = useState([]);
   const cartActions = {
     // Deletes ALL QUANTITIES of that item. Desired behavior.
     handleDelete: (id) => setCart(c => c.filter(item => item.id !== id)),
-    // Adds item to cart, as long as quantity is >= 1. Also if the item is already in the cart, then it
-    // simply modifies the quanity property of the existing item in cart, instead of adding a new obj
+
     handleAdd: (item, quantity) => {
       if (quantity < 1) {
         console.log('quanity too small');
         return;
       }
 
-      console.log(`Adding ${quantity} ${item.title} to cart ${typeof quantity}`);
+      console.log(`Adding ${quantity} ${item.title} to cart`);
       setCart(c => {
         //if item is already in the cart, simply add to quanitty
-        const itemAlreadyInCart = c.find(i => i.id === item.id);
-        if(itemAlreadyInCart){
+        const isItemInCart = c.find(i => i.id === item.id);
+        if(isItemInCart){
           return c.map(i => {
-            if (item.id === i.id){
-              const newQuantity = i.quantity + quantity;
+            if (i.id === item.id){
+              const newQuantity = item.quantity + quantity;
               return {
-                ...i,
+                ...item,
                 quantity: newQuantity,
                 total: i.price * newQuantity,
               }
-            }else return i;
+            }
+            return i;
           });
         }
         // else item not already in cart, add new obj
@@ -65,17 +66,19 @@ function App() {
   }
   
   return (
-    <BrowserRouter basename="/shopping-cart">
-      <Navbar cart={cart}></Navbar>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/shop">
-          <Route index element={<Shop cartActions= {cartActions}/>}/>
-          <Route path=":id" element={<ItemDetail {...cartActions}/>}/>
-        </Route>
-        <Route path="/checkout" element={<Cart cart={cart} {...cartActions}/>}/>
-      </Routes>
-    </BrowserRouter>
+    <ShopProvider>
+      <BrowserRouter basename="/shopping-cart">
+        <Navbar cart={cart}></Navbar>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/shop">
+            <Route index element={<Shop cartActions= {cartActions}/>}/>
+            <Route path=":id" element={<ItemDetail {...cartActions}/>}/>
+          </Route>
+          <Route path="/checkout" element={<Cart cart={cart} {...cartActions}/>}/>
+        </Routes>
+      </BrowserRouter>
+    </ShopProvider>
   );
 }
 

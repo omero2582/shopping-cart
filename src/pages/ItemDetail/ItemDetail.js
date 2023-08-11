@@ -5,6 +5,7 @@ import { useState } from "react";
 import useShop from "../../components/useShop/useShop";
 import validator from "validator";
 import './ItemDetail.css'
+import useItem from "../../components/useShop/useItem";
 
 export default function ItemDetail ({handleAdd}) {
   // const location = useLocation();
@@ -14,13 +15,14 @@ export default function ItemDetail ({handleAdd}) {
   const sanitizedId = validator.escape(useParams().id);
   const id = Number(sanitizedId);
   
-  const { items, isLoading } = useShop();
-  const item = items.find(i => i.id === id);
+  const { item, isLoading, error } = useItem(id);
+  // const { items, isLoading, error } = useShop();
+  // const item = items.find(i => i.id === id);
 
   if (isLoading ){
-    return <h1>Loading</h1>
+    return <h1>Loading...</h1>
   }
-  if (!item){
+  if (error){
     return <h1>Error</h1>
   }
   // const {name, priceTotal ,img, description} = item;
@@ -37,15 +39,18 @@ export default function ItemDetail ({handleAdd}) {
         <h2 className='name'>{title}</h2>
         <p className='price'>${price}</p>
         <div className="buy-area">
-          <label>
-            <input className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>
-            {/*maybe extract this input with the state into its own component bc I want to reuse this in the cart page.
-              Prob not tho. Have to think about this. I think its the extra restrctions of min=1 and other
-              html attributes that I set, that make me want to extract this into a component, since there are a lot of specific 'settings'*/}
-          </label>
-          <button onClick={() => handleAdd(item, quantityBuy)}>Add to Cart</button>
+          <label htmlFor="quantity">Quantity:</label>
+          <input id="quantity" className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>
         </div>
-        <p className='description'>{description}</p>
+          {/*maybe extract this input with the state into its own component bc I want to reuse this in the cart page.
+            Prob not tho. Have to think about this. I think its the extra restrctions of min=1 and other
+            html attributes that I set, that make me want to extract this into a component, since there are a lot of specific 'settings'*/}
+          
+        <button className="buy" onClick={() => handleAdd(item, quantityBuy)}>Add to Cart</button>
+        <section className="description-area">
+          <h3>Product Description</h3>
+          <p>{description}</p>
+        </section>
       </div>
     </section>
     //{JSON.stringify(item, null, 2)}
