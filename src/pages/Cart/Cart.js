@@ -2,16 +2,20 @@ import React from "react";
 import { CartItem } from "./CartItem";
 import './Cart.css'
 import { Link } from "react-router-dom";
-export function Cart({cart, handleDelete}) {
+import { useCartContext } from "../../context/cartContext/cartContext";
+export function Cart() {
+  const {cart} = useCartContext();
   // cart = cart.map(item => {
   //   return {
   //     ...item,
   //     total: item.price * item.quantity
   //   }
   // })
-  const subtotal = cart.reduce((subtotal, item) => {
+  const subtotalRaw = cart.reduce((subtotal, item) => {
     return subtotal + item.total;
   }, 0);
+
+  const subtotal = subtotalRaw.toFixed(2);
   return(
     <main className="Cart">
       <h1>Your Cart</h1>
@@ -22,7 +26,7 @@ export function Cart({cart, handleDelete}) {
         <section className="cart-items">   
         <h2 className="price-title">Price</h2>
         <h2 className="visually-hidden">Cart Items</h2>
-        {cart.map(item => <CartItem key={item.id} item={item} handleDelete={handleDelete}/>)}
+        {cart.map(item => <CartItem key={item.id} item={item}/>)}
         </section>
         <h2>Subtotal: ${subtotal}</h2>
       </>)

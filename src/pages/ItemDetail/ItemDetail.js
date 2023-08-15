@@ -1,16 +1,12 @@
-//Item Detail page. I renamed the previous Item.js to ShopItem, which are the items displayed on shop page
-
-import {useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
-import useShop from "../../components/useShop/useShop";
 import validator from "validator";
 import './ItemDetail.css'
-import useItem from "../../components/useShop/useItem";
+import useItem from "../../context/shopContext/useItem";
+import { useCartContext } from "../../context/cartContext/cartContext";
 
-export default function ItemDetail ({handleAdd}) {
-  // const location = useLocation();
-  // console.log(location)
-  // let item = location.state
+export default function ItemDetail () {
+  const {handleAdd} = useCartContext();
   const [quantityBuy, setQuantityBuy] = useState(1);
   const sanitizedId = validator.escape(useParams().id);
   const id = Number(sanitizedId);
@@ -37,7 +33,7 @@ export default function ItemDetail ({handleAdd}) {
       <img alt={title} src={image}></img>
       <div className="details">
         <h2 className='name'>{title}</h2>
-        <p className='price'>${price}</p>
+        <p className='price'>${price.toFixed(2)}</p>
         <div className="buy-area">
           <label htmlFor="quantity">Quantity:</label>
           <input id="quantity" className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>

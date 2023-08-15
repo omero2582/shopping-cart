@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useCartContext } from "../../context/cartContext/cartContext";
 
-export function Navbar({cart}) {
+export function Navbar() {
+  const {cart} = useCartContext();
   return (
     <nav className="navbar">
       <Link to="/" className="logo"><h1>My Shop</h1></Link>

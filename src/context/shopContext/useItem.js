@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useShopContext } from '../../context/shopContext';
+import { useShopContext } from './shopContext';
 
 //fetch item or find the item from the already loaded context
 const useItem = (id) => {

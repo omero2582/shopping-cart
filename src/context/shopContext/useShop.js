@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useShopContext } from '../../context/shopContext';
+import { useShopContext } from './shopContext';
 
 //fetch all items
 const useShop = () => {
@@ -8,7 +8,7 @@ const useShop = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
-    console.log('fetching items');
+    console.log('fetching shop');
     const fetchData = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
     if (response.status >= 400) {

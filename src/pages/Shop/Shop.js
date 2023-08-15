@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import ShopItem from './ShopItem'
 import './Shop.css';
 import { useSearchParams } from "react-router-dom";
-import useShop from "../../components/useShop/useShop";
+import useShop from "../../context/shopContext/useShop";
 
 const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
@@ -25,7 +25,7 @@ const filterItems = (items, filter) => {
   return items.filter(p => p.category === filter);
 };
 
-export function Shop({cartActions}) {
+export function Shop() {
   const [searchParams, setSearchParams] = useSearchParams('');
   const filter = searchParams.get('category') ;
   const sort = searchParams.get('sort') || 'price-asc';
@@ -93,7 +93,7 @@ export function Shop({cartActions}) {
           <>
             <h2 className="visually-hidden">All Items</h2>
             {processedItems.map(i => 
-              <ShopItem item={i} key={i.id} {...cartActions} showDescription={showDescription}/>)}
+              <ShopItem item={i} key={i.id} showDescription={showDescription}/>)}
           </>}
         
       </section>
