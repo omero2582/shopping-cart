@@ -29,7 +29,7 @@ export function Shop() {
   const [searchParams, setSearchParams] = useSearchParams('');
   const filter = searchParams.get('category') ;
   const sort = searchParams.get('sort') || 'price-asc';
-  const [showDescription, setShowDescription] = useState(true) 
+  const [showDescription, setShowDescription] = useState(false) 
   // fetch shop
   const { items, error, isLoading } = useShop();
 

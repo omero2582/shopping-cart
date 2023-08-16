@@ -14,7 +14,7 @@ export function CartItem({item}) {
         </Link>
         <p>Quantity: {quantity}</p>
         <p className='price'>Price: ${price.toFixed(2)}</p>
-        <button onClick={() => handleDelete(id)}>Remove</button>
+        <button className="remove" onClick={() => handleDelete(id)}>Remove</button>
       </div>
       <p className="total">Total: ${total.toFixed(2)}</p>
     </section>

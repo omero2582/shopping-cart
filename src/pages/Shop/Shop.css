@@ -11,7 +11,6 @@
   grid-area: items;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* padding: 0px 5px; */
   /**/
   /*NEW*/
   gap: 30px;
@@ -32,9 +31,11 @@
   padding: 20px 10px;
   
   /*to remove long text overlap*/
-  overflow: hidden;
+  /* overflow: hidden; */
   /**/
   /* NEW */
+  /* text-overflow: clip; */
+  overflow-wrap: break-word;
   background-color: white;
   box-shadow: 0px 0px 6px 2px lightgrey;
 }
@@ -49,6 +50,10 @@
   font-size: 1.1rem;
   text-align: center;
   color: black;
+  overflow-wrap: break-word;
+
+  /*NEW*/
+  padding: 0px 5px;
 }
 
 .item > a {
@@ -61,6 +66,7 @@
 
  .item .description{
   list-style-type: '- ';
+  padding: 0px 10px;
 }
 
 

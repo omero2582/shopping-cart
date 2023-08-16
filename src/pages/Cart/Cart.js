@@ -23,12 +23,12 @@ export function Cart() {
       (<p>Your Cart is empty. Check out <Link to={'/shop'}>the shop</Link> and add some items</p>)
       :
       (<>
-        <section className="cart-items">   
+      <section className="cart-items">   
         <h2 className="price-title">Price</h2>
         <h2 className="visually-hidden">Cart Items</h2>
         {cart.map(item => <CartItem key={item.id} item={item}/>)}
-        </section>
-        <h2>Subtotal: ${subtotal}</h2>
+      </section>
+      <h2 className="subtotal">Subtotal: ${subtotal}</h2>
       </>)
     }
       
