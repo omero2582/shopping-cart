@@ -48,55 +48,89 @@ export function Shop() {
     // preserves all other search params
   };
 
-  const handleToggleDescription = (e) => {
+  const toggleDescription = (e) => {
     setShowDescription(e.target.checked);
   };
 
   return(
     <main className="Shop">
       <h1 className="visually-hidden">Shop</h1>
-      <section className="filter">
-        <h3 className="title">Categories</h3>
-        <ul>
-          <li onClick={() => setSearchParams({})}>All</li>
-          <li onClick={() => setSearchParams({category: "men's clothing"})}>Men's Clothing</li>
-          <li onClick={() => setSearchParams({category: "women's clothing"})}>Women's Clothing</li>
-          <li onClick={() => setSearchParams({category: 'electronics'})}>Electronics</li>
-          <li onClick={() => setSearchParams({category: 'jewelery'})}>Jewelery</li>
-          {/* Clears all other search params. Intended */}
-        </ul>
-      </section>
-      <section className="options">
-        <section className="sort">
-          <label htmlFor="sort-options" className="sort-title">Sort</label>
-          <select id="sort-options" value={sort || 'price-asc'}  // sets price-asc as default, without changing the url
-          onChange={handleSort}>
-            <option value='price-asc'>Price: Low to High</option>
-            <option value='price-desc'>Price: High to Low</option>
-            <option value='name-asc'>Name: A to Z</option>
-            <option value='name-desc'>Name: Z to A</option>
-          </select>
-        </section>
-        <section className="toggle-description">
-          <input 
-            type="checkbox"
-            id="toggle-description"
-            checked={showDescription}
-            onChange={handleToggleDescription}></input>
-          <label htmlFor="toggle-description">Descriptions</label>
-        </section>
-      </section>
-      <section className={`all-items ${showDescription ? 'show-description' : ''}`}>
-        {error ? <h2 className="error">ERROR loading shop items</h2>
-        : isLoading ? <h2>Loading...</h2>
-        :
-          <>
-            <h2 className="visually-hidden">All Items</h2>
-            {processedItems.map(i => 
-              <ShopItem item={i} key={i.id} showDescription={showDescription}/>)}
-          </>}
-        
-      </section>
+      <Sidebar setSearchParams={setSearchParams}/>
+      <Options
+        sort={sort}
+        handleSort={handleSort}
+        showDescription={showDescription}
+        toggleDescription={toggleDescription}
+      />
+      <AllItems
+        error={error}
+        isLoading={isLoading}
+        items={processedItems}
+        showDescription={showDescription}
+      />
     </main>
+  )
+}
+
+function Sidebar({setSearchParams}) {
+  return (
+    <section className="Sidebar">
+      <h3 className="title">Categories</h3>
+      <ul>
+        <li onClick={() => setSearchParams({})}>All</li>
+        <li onClick={() => setSearchParams({category: "men's clothing"})}>Men's Clothing</li>
+        <li onClick={() => setSearchParams({category: "women's clothing"})}>Women's Clothing</li>
+        <li onClick={() => setSearchParams({category: 'electronics'})}>Electronics</li>
+        <li onClick={() => setSearchParams({category: 'jewelery'})}>Jewelery</li>
+        {/* Clears all other search params. Intended */}
+      </ul>
+    </section>
+  )
+}
+
+function Options({ sort, handleSort , showDescription, toggleDescription }){
+  return (
+    <section className="Options">
+      <section className="sort">
+        <label htmlFor="sort-options" className="sort-title">Sort</label>
+        <select id="sort-options" value={sort || 'price-asc'}  // sets price-asc as default, without changing the url
+        onChange={handleSort}>
+          <option value='price-asc'>Price: Low to High</option>
+          <option value='price-desc'>Price: High to Low</option>
+          <option value='name-asc'>Name: A to Z</option>
+          <option value='name-desc'>Name: Z to A</option>
+        </select>
+      </section>
+      <section className="toggle-description">
+        <input 
+          type="checkbox"
+          id="toggle-description"
+          checked={showDescription}
+          onChange={toggleDescription}></input>
+        <label htmlFor="toggle-description">Descriptions</label>
+      </section>
+    </section>
+  )
+}
+
+function AllItems({ error, isLoading, items, showDescription }) {
+
+  if (error) return (
+    <section className={'error'}>
+      <h2>ERROR loading shop items</h2>
+    </section>
+  )
+  if (isLoading) return (
+    <section className={'loading'}>
+      <h2>Loading...</h2>
+    </section>
+  )
+  
+  return (
+    <section className={`AllItems ${showDescription ? 'show-description' : ''}`}>
+      <h2 className="visually-hidden">All Items</h2>
+      {items.map(i => 
+        <ShopItem item={i} key={i.id} showDescription={showDescription}/>)}
+    </section>
   )
 }

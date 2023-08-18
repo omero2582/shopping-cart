@@ -15,11 +15,23 @@ export default function ItemDetail () {
   // const { items, isLoading, error } = useShop();
   // const item = items.find(i => i.id === id);
 
-  if (isLoading ){
-    return <h1>Loading...</h1>
+  if (isLoading){
+    return (
+      <section className="ItemDetail">
+        <section className="loading">
+          <h2>Loading...</h2>
+        </section>
+      </section>
+    )
   }
   if (error){
-    return <h1>Error</h1>
+    return (
+      <section className="ItemDetail">
+        <section className="error">
+          <h2>Error loading item...</h2>
+        </section>
+      </section>
+    )
   }
   // const {name, priceTotal ,img, description} = item;
   const {title, price ,image, description} = item;
@@ -44,8 +56,8 @@ export default function ItemDetail () {
           
         <button className="buy" onClick={() => handleAdd(item, quantityBuy)}>Add to Cart</button>
         <section className="description-area">
-          <h3>Product Description</h3>
-          <p>{description}</p>
+          <h3 className="title">Product Description</h3>
+          <p className='description'>{description}</p>
         </section>
       </div>
     </section>

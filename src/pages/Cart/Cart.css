@@ -35,7 +35,6 @@
   align-items: center;
   /* grid-template-columns: minmax(0, 96px); */
   grid-template-columns: auto 1fr auto;
-  grid-auto-flow: column;
   padding: 10px;
   gap: 10px;
 
@@ -55,6 +54,7 @@
 .cart-item .info {
   justify-self: start;
   /* align-self: start; */
+  
 }
 
 .cart-item .total {
@@ -66,12 +66,15 @@
   margin: 2px;
 }
 
+.cart-item .title {
+}
+
 .cart-item a {
   text-decoration: none;
   color: black;
 }
 
-.cart-item a :hover {
+.cart-item a:hover {
   text-decoration: underline;
 }
 

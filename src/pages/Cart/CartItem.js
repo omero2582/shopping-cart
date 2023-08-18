@@ -9,9 +9,11 @@ export function CartItem({item}) {
     <section className="cart-item">
       <img alt={title} src={image}></img>
       <div className="info">
-        <Link to={`/shop/${id}`}>
-          <h3 className='title'>{title}</h3>
-        </Link>
+          <h3 className='title'>
+            <Link to={`/shop/${id}`}>
+              {title}
+            </Link>
+          </h3>
         <p>Quantity: {quantity}</p>
         <p className='price'>Price: ${price.toFixed(2)}</p>
         <button className="remove" onClick={() => handleDelete(id)}>Remove</button>

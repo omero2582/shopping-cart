@@ -1,38 +1,47 @@
+.Shop {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+    "sidebar options"
+    "sidebar items";
+}
+
 .Shop .error{
-  background-color: salmon;
-  font-size: 1.6rem;
+  background-color: #FFD8D9;
+  font-size: 1.2rem;
   display: grid;
   align-content: center;
   justify-content: center;
+  /* align-self: start; */
   margin: 0px;
 }
 
-.all-items{
+.Shop .loading{
+  display: flex;
+  justify-content: center;
+}
+
+.AllItems{
+  background-color:hsl(0, 0%, 95%);
   grid-area: items;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /**/
-  /*NEW*/
   gap: 30px;
-  background-color:hsl(0, 0%, 95%);
   padding: 10px 10px;
 }
 
-.all-items.show-description{
+.AllItems.show-description{
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.item{
-  /* border: 2px solid black; */
+.ShopItem{
   display: grid;
   justify-content: center;
   align-content: flex-start;
   justify-items: center;
   padding: 20px 10px;
   
-  /*to remove long text overlap*/
-  /* overflow: hidden; */
-  /**/
   /* NEW */
   /* text-overflow: clip; */
   overflow-wrap: break-word;
@@ -40,85 +49,95 @@
   box-shadow: 0px 0px 6px 2px lightgrey;
 }
 
-.item .price{
-  margin: 5px 0px 0px;
+.ShopItem .image-container {
+  height: 150px;
+  width: 90%;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  /* background-color: lightgray; */
 }
 
-.item .title{
+.ShopItem .image-container:hover {
+  cursor: pointer;
+}
+
+.ShopItem img{
+  max-width: 100%;
+  max-height: 150px;
+}
+
+
+.ShopItem .title{
   /*h2 has 20 margin bot and top, and fontsize = 1.5rem*/
   margin: 8px 0px 0px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
   color: black;
   overflow-wrap: break-word;
-
+  
   /*NEW*/
   padding: 0px 5px;
+  font-weight: 400;
 }
 
-.item > a {
+.ShopItem > a {
   text-decoration: none;
 }
 
-.item > a:hover {
+.ShopItem > a:hover {
   text-decoration: underline solid black;
 }
+.ShopItem .price{
+  margin: 10px 0px 0px;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
 
- .item .description{
+.ShopItem .description{
   list-style-type: '- ';
   padding: 0px 10px;
 }
 
 
-
-
-.item * {
-  /* overflow-wrap: break-word; */
-}
-
-.item img{
-  width: 100px;
-  height: auto;
-}
-
-.item button{
+.ShopItem button{
   font-size: 1.05rem;
   width: 125px;
   height: 30px;
 }
 
-.filter {
-  grid-area: filter;
+.Sidebar {
+  grid-area: sidebar;
   padding: 20px 0px;
   text-align: center;
-  max-width: 135px;
+  max-width: 150px;
   background-color: var(--navbar-color);
   /*TODO TODO change this to be responsive.. dont know why max width doesnt work here*/
   color: white;
 }
 
-.filter > .title {
+.Sidebar > .title {
   text-decoration: underline;
 }
 
-.filter ul {
+.Sidebar ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
 
-.filter li {
+.Sidebar li {
   font-size: 1.2rem;
   padding: 10px 5px;
 }
 
-.filter li:hover {
+.Sidebar li:hover {
   cursor: pointer;
   background-color: var(--navbar-hover);
   /* background-color: yellow; */
 }
 
-.options{
+.Options{
   grid-area: options;
   display: grid;
   grid-auto-flow: column;
@@ -126,40 +145,33 @@
   align-items: center;
   gap: 10px;
   padding: 5px 10px 0px;
-  border: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
-.options .sort-title {
+.Options .sort-title {
   margin: 0px;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-.sort select {
+.Options .sort select {
   font-size: 1rem;
   margin: 5px;
 }
 
-.options .toggle-description{
+.Options .toggle-description{
   display: grid;
   grid-auto-flow: column;
   align-items: center;
   gap: 3px;
 }
 
-.options .toggle-description label{
+.Options #toggle-description{
+  width: 18px;
+  height: 18px;
+}
+.Options .toggle-description label{
   font-size: 1.1rem;
 }
 
-.options #toggle-description{
-  width: 20px;
-  height: 20px;
-}
 
-.Shop {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-areas: 
-    "filter options"
-    "filter items";
-}
