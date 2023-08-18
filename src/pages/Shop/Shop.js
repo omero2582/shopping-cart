@@ -122,6 +122,7 @@ function AllItems({ error, isLoading, items, showDescription }) {
   )
   if (isLoading) return (
     <section className={'loading'}>
+      <div className="loading-spinner"></div>
       <h2>Loading...</h2>
     </section>
   )

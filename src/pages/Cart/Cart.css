@@ -67,11 +67,13 @@
 }
 
 .cart-item .title {
+  margin: 0px;
 }
 
-.cart-item a {
+.cart-item .title a {
   text-decoration: none;
   color: black;
+  margin: 0px;
 }
 
 .cart-item a:hover {
@@ -79,6 +81,28 @@
 }
 
 .cart-item .remove {
-  font-size: 0.95rem;
-  padding: 3px 5px;
+  font-size: 0.98rem;
+  /* padding: 3px 5px; */
+  
+  padding: 3px 0px;
+  color: blue;
+  background-color: white;
+  border: 0px;
+
+  font-family: Roboto;
+  font-weight: 500;
+
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0px;
+}
+
+.cart-item .remove:hover {
+  text-decoration: underline;
+}
+
+.cart-item .remove svg {
+  margin: 0px;
 }

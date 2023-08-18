@@ -75,12 +75,33 @@
 
 .ItemDetail .details button {
   font-size: 1.05rem;
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
   margin-top: 3px;
   background-color: #FFCE00;
   border: 0px;
+  /**/
+
+  width: 117px;
+  height: 36px;
 }
 
-.ItemDetail .details button:hover{
+.ItemDetail .details button:hover:not(:disabled){
   background-color: #FFF200;
+}
+
+.ItemDetail .details button:disabled{
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+.ItemDetail button .loading{
+  flex-direction: row;
+  gap: 7px;
+}
+
+.ItemDetail button .loading-spinner {
+  width: 17px;
+  height: 17px;
+  margin-left: -5px;
 }

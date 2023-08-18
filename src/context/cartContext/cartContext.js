@@ -5,14 +5,19 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   console.log('CART CONTEXT RENDER');
   const [cart, setCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     console.log('cart', cart);
   }, [cart])
   const cartActions = {
     // Deletes ALL QUANTITIES of that item. Desired behavior.
-    handleDelete: (id) => setCart(c => c.filter(item => item.id !== id)),
+    handleDelete: async (id) => {
+      // await mockRequest();
+      setCart(c => c.filter(item => item.id !== id))
+    },
 
-    handleAdd: (item, quantity) => {
+    handleAdd: async (item, quantity) => {
+      await mockRequest();
       if (quantity < 1) {
         console.log('quanity too small');
         return;
@@ -47,7 +52,8 @@ export const CartProvider = ({ children }) => {
       })  //setCart
     },
     // Change the quanity of a an item, given an id & quantity
-    handleEditQuantity: (id, quantity) => {   
+    handleEditQuantity: async (id, quantity) => {  
+      // await mockRequest(); 
       setCart(c => {
         return c.map(item => {
           if (item.id === id){
@@ -63,8 +69,18 @@ export const CartProvider = ({ children }) => {
     } 
   }
 
+  const mockRequest = () => {
+    setIsLoading(true);
+
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        setIsLoading(false);
+        resolve();
+      }, 700);
+   }); 
+  }
   return (
-    <CartContext.Provider value={{ cart, setCart, ...cartActions }}>
+    <CartContext.Provider value={{ cart, setCart, isLoading, ...cartActions }}>
       {children}
     </CartContext.Provider>
   );
