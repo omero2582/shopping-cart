@@ -1,7 +1,15 @@
 .Home{
   text-align: center;
+  background-color: var(--page-background);
+  display: grid;
 }
 
 .Home .title {
-  margin: 21.4px;
+  /* margin: 21.4px 0px; */
+  /*margin-top: 10px;*/
+  margin-top: 18px;
+}
+
+.Home .description{
+  margin: 16px 0px;
 }

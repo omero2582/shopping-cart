@@ -73,17 +73,23 @@ export function Shop() {
 }
 
 function Sidebar({setSearchParams}) {
+  const [showSidebar, setShowSidebar] = useState(true);
   return (
-    <section className="Sidebar">
-      <h3 className="title">Categories</h3>
-      <ul>
-        <li onClick={() => setSearchParams({})}>All</li>
-        <li onClick={() => setSearchParams({category: "men's clothing"})}>Men's Clothing</li>
-        <li onClick={() => setSearchParams({category: "women's clothing"})}>Women's Clothing</li>
-        <li onClick={() => setSearchParams({category: 'electronics'})}>Electronics</li>
-        <li onClick={() => setSearchParams({category: 'jewelery'})}>Jewelery</li>
-        {/* Clears all other search params. Intended */}
-      </ul>
+    <section className={`Sidebar ${!showSidebar && 'hidden'}`}>
+      <button className="toggle-sidebar" onClick={() => setShowSidebar(s => !s)}>☰</button>
+      { showSidebar &&
+      <>
+        <h3 className="title">Categories</h3>
+        <ul>
+          <li onClick={() => setSearchParams({})}>All</li>
+          <li onClick={() => setSearchParams({category: "men's clothing"})}>Men's Clothing</li>
+          <li onClick={() => setSearchParams({category: "women's clothing"})}>Women's Clothing</li>
+          <li onClick={() => setSearchParams({category: 'electronics'})}>Electronics</li>
+          <li onClick={() => setSearchParams({category: 'jewelery'})}>Jewelery</li>
+          {/* Clears all other search params. Intended */}
+        </ul>
+      </>
+      }
     </section>
   )
 }

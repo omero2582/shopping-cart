@@ -5,7 +5,7 @@ export function Home() {
   return(
     <main className="Home">
       <h1 className="title">Home</h1>
-      <p>Check out <Link to="/shop">our Store!</Link></p>
+      <p className="description">Check out <Link to="/shop">our Store!</Link></p>
     </main>
   )
 }

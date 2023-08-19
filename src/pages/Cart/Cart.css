@@ -2,7 +2,7 @@
   display: grid;
   justify-content: center;
   justify-items: center;
-  background-color: hsl(0, 0%, 95%);
+  background-color: var(--page-background);
 }
 
 .Cart .empty-text{
