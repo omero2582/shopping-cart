@@ -3,6 +3,8 @@ import ShopItem from './ShopItem'
 import './Shop.css';
 import { useSearchParams } from "react-router-dom";
 import useShop from "../../context/shopContext/useShop";
+import Icon from '@mdi/react';
+import { mdiMenu } from '@mdi/js';
 
 const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
@@ -76,7 +78,10 @@ function Sidebar({setSearchParams}) {
   const [showSidebar, setShowSidebar] = useState(true);
   return (
     <section className={`Sidebar ${!showSidebar && 'hidden'}`}>
-      <button className="toggle-sidebar" onClick={() => setShowSidebar(s => !s)}>☰</button>
+      <button className="toggle-sidebar" onClick={() => setShowSidebar(s => !s)}>
+        {/* ☰ */}
+        <Icon path={mdiMenu} size={1.25} />
+      </button>
       { showSidebar &&
       <>
         <h3 className="title">Categories</h3>
