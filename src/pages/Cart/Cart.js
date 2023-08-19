@@ -20,7 +20,7 @@ export function Cart() {
     <main className="Cart">
       <h1>Your Cart</h1>
       {cart.length === 0 ?
-      (<p>Your Cart is empty. Check out <Link to={'/shop'}>the shop</Link> and add some items</p>)
+      (<p className="empty-text">Your Cart is empty. Check out <Link to={'/shop'}>the shop</Link> and add some items</p>)
       :
       (<>
       <section className="cart-items">   

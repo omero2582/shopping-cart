@@ -1,3 +1,7 @@
 .Home{
   text-align: center;
 }
+
+.Home .title {
+  margin: 21.4px;
+}

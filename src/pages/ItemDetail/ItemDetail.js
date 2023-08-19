@@ -20,7 +20,7 @@ export default function ItemDetail () {
       <section className="ItemDetail">
         <section className="loading">
           <div className="loading-spinner"></div>
-          <h2>Loading...</h2>
+          <h2 className="loading-text">Loading...</h2>
         </section>
       </section>
     )

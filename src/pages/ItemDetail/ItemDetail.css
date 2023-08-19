@@ -49,12 +49,6 @@
   padding: 5px 0px;
 }
 
-
-.ItemDetail .details *{
-  margin: 0px;
-  padding: 0px;
-}
-
 .ItemDetail .description-area{
   margin-top: 15px;
 }
@@ -96,6 +90,7 @@
 
 
 .ItemDetail button .loading{
+  margin-top: 0px;
   flex-direction: row;
   gap: 7px;
 }

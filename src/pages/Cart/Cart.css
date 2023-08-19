@@ -5,9 +5,10 @@
   background-color: hsl(0, 0%, 95%);
 }
 
-.Cart h1, .Cart h2, .Cart h3{
-  margin: 0px;
+.Cart .empty-text{
+  margin: 16px 0px;
 }
+
 
 .Cart h1 {
   margin: 10px 0px 0px;
@@ -106,3 +107,12 @@
 .cart-item .remove svg {
   margin: 0px;
 }
+
+/*TODO TODO...
+I have to keep all the specified 'margin: 0' above
+Not sure why, but a lot of elements are getting tiny bits of extra padding.
+I think it happens when I nest elements inside of elements that dont expect
+to have children? maybe something to do with the spans that are being created
+on the spot, or maybe something with CSS specificity with browser css styles for these elements.
+They are ignoring the :root * {margin: 0px} that I set on index.css
+*/
