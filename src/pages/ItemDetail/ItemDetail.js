@@ -4,6 +4,7 @@ import validator from "validator";
 import './ItemDetail.css'
 import useItem from "../../context/shopContext/useItem";
 import { useCartContext } from "../../context/cartContext/cartContext";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 export default function ItemDetail () {
   const {isLoading: cartLoading, handleAdd} = useCartContext();
@@ -18,10 +19,7 @@ export default function ItemDetail () {
   if (isLoading){
     return (
       <section className="ItemDetail">
-        <section className="loading">
-          <div className="loading-spinner"></div>
-          <h2 className="loading-text">Loading...</h2>
-        </section>
+        <LoadingSpinner showText sx={{'margin-top': '20px'}}/>
       </section>
     )
   }
@@ -61,10 +59,7 @@ export default function ItemDetail () {
           
         <button className="buy" onClick={addToCart} disabled={cartLoading}>
           {cartLoading ?
-          <div className="loading">
-            <div className="loading-spinner"></div>
-            {/* <p>Loading...</p>  */}
-          </div>
+          <LoadingSpinner width={17}/>
             : 'Add to Cart'}
         </button>
         <section className="description-area">

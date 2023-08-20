@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import useShop from "../../context/shopContext/useShop";
 import Icon from '@mdi/react';
 import { mdiMenu } from '@mdi/js';
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
@@ -132,10 +133,7 @@ function AllItems({ error, isLoading, items, showDescription }) {
     </section>
   )
   if (isLoading) return (
-    <section className={'loading'}>
-      <div className="loading-spinner"></div>
-      <h2 className="loading-text">Loading...</h2>
-    </section>
+    <LoadingSpinner showText sx={{'margin-top': '20px'}}/>
   )
   
   return (

@@ -8,11 +8,6 @@
   margin: 0px;
 }
 
-.ItemDetail .loading{
-  display: flex;
-  justify-content: center;
-}
-
 .ItemDetail {
   /* background-color: aliceblue; */
   padding-top: 40px;
@@ -89,19 +84,6 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-
-
-.ItemDetail button .loading{
-  margin-top: 0px;
-  flex-direction: row;
-  gap: 7px;
-}
-
-.ItemDetail button .loading-spinner {
-  width: 17px;
-  height: 17px;
-  margin-left: -5px;
-}
 
 @media (max-width: 600px){
   .ItemDetail {
