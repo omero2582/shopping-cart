@@ -232,6 +232,14 @@
   margin-left: -1px;
 }
 
+@media (max-width: 600px) {
+  .Options {
+    grid-auto-flow: row;
+    padding-left: 10px;
+    justify-content: center;
+    justify-items: center;
+  }
+}
 
 
 
