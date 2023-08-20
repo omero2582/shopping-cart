@@ -23,6 +23,8 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
   padding: 10px 10px;
+  /*NEW after extending apps vertical to cover whole screen*/
+  align-content: start;
 }
 
 .AllItems.show-description{
@@ -92,6 +94,9 @@
   list-style-type: '- ';
   padding: 0px 10px;
   margin: 16px 0px;
+  
+  /* fixes long strings without spaces overflowing the container*/
+  overflow-wrap: anywhere; 
 }
 
 

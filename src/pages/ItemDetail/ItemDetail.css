@@ -17,6 +17,7 @@
   grid-auto-flow: column;
   /* grid-template-columns: minmax(0, 140px); */
   /* gap: 20px; */
+  align-content: start;
 }
 
 .ItemDetail .details{
