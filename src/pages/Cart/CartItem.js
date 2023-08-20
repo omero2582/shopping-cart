@@ -2,14 +2,16 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/cartContext/cartContext";
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline } from '@mdi/js';
+import { useNavigate } from "react-router-dom";
 
 export function CartItem({item}) {
   const { title, price, total, image, id, description, quantity } = item;
   const { handleDelete } = useCartContext();
+  const navigate = useNavigate();
 
   return (
     <section className="cart-item">
-      <img alt={title} src={image}></img>
+      <img alt={title} src={image} onClick={() => navigate(`/shop/${id}`)}></img>
       <div className="info">
           <h3 className='title'>
             <Link to={`/shop/${id}`}>
@@ -24,7 +26,9 @@ export function CartItem({item}) {
           Remove
         </button>
       </div>
-      <p className="total">Total: ${total.toFixed(2)}</p>
+      <p className="total-container">
+        <span className="total-text">Total: </span>
+        <strong className="total">${total.toFixed(2)}</strong></p>
     </section>
     //{JSON.stringify(item, null, 2)}
   )

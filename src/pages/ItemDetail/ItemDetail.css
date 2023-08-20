@@ -44,8 +44,10 @@
 }
 
 .ItemDetail .details .price {
-  font-size: 1.4rem;
-  font-weight: 600;
+  /* font-size: 1.4rem;
+  font-weight: 600; */
+  font-size: 1.8rem;
+  font-weight: 500;
   padding: 5px 0px;
 }
 
@@ -99,4 +101,16 @@
   width: 17px;
   height: 17px;
   margin-left: -5px;
+}
+
+@media (max-width: 600px){
+  .ItemDetail {
+    grid-auto-flow: row;
+    padding-top: 20px;
+  }
+  
+  .ItemDetail img{
+    justify-self: center;
+    padding-bottom: 10px;
+  }
 }

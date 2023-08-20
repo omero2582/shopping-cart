@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useCartContext } from "../../context/cartContext/cartContext";
+import Icon from '@mdi/react';
+import { mdiCart } from '@mdi/js';
+
 
 export function Navbar() {
   const {cart} = useCartContext();
@@ -14,7 +17,7 @@ export function Navbar() {
       <ul className="right">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/shop">Shop</Link></li>
-        <li><Link to="/checkout">Cart {numItems}</Link></li>
+        <li><Link to="/checkout" className="cart"><Icon path={mdiCart} size={1.2}/> {numItems}</Link></li>
       </ul>
     </nav>
   )  

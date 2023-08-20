@@ -51,10 +51,21 @@
   cursor: pointer;
 }
 
+.navbar .cart{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 5px;
+}
+
 @media (max-width: 800px) {
   .navbar {
     grid-auto-flow: row;
     justify-content: stretch;
+    
+    position: sticky;
+    top: -50px; /*height of the title*/
+    z-index: 1;
   }
 
   .navbar .logo * {
@@ -65,4 +76,5 @@
     padding: 10px 0px;
     font-size: 1.25rem;
   }
+
 }

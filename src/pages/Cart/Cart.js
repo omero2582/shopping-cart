@@ -24,7 +24,7 @@ export function Cart() {
       :
       (<>
       <section className="cart-items">   
-        <h2 className="price-title">Price</h2>
+        <h2 className="item-total-title">Item Total</h2>
         <h2 className="visually-hidden">Cart Items</h2>
         {cart.map(item => <CartItem key={item.id} item={item}/>)}
       </section>

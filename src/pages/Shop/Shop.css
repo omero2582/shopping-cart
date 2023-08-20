@@ -199,7 +199,9 @@
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  padding: 5px 0px 0px 35px;
+  /* padding: 5px 0px 0px 35px; */
+  padding: 5px 0px;
+  padding-left: 35px; 
   border-bottom: 2px solid black;
 }
 
@@ -235,9 +237,12 @@
 @media (max-width: 600px) {
   .Options {
     grid-auto-flow: row;
-    padding-left: 10px;
     justify-content: center;
     justify-items: center;
+    padding-left: 10px;
+    gap: 0px;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
   }
 }
 
