@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import ShopItem from './ShopItem'
 import './Shop.css';
 import { useSearchParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import useShop from "../../context/shopContext/useShop";
 import Icon from '@mdi/react';
 import { mdiMenu } from '@mdi/js';
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { useMediaQuery } from 'react-responsive';
 
 const sortItems = (items, sort) => {
   console.log(`sort ${sort}`);
@@ -77,6 +78,16 @@ export function Shop() {
 
 function Sidebar({setSearchParams}) {
   const [showSidebar, setShowSidebar] = useState(true);
+  // media query library new
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+
+  useEffect(() => {
+    if (isMobile) {
+      setShowSidebar(false); // Set 'toggle' to false when the media query matches
+    }
+    else{setShowSidebar(true)}
+  }, [isMobile]);
+
   return (
     <section className={`Sidebar ${!showSidebar && 'hidden'}`}>
       <button className="toggle-sidebar" onClick={() => setShowSidebar(s => !s)}>
