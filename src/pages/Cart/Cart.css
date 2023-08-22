@@ -3,7 +3,7 @@
   justify-content: center;
   justify-items: center;
   align-content: start;
-  background-color: var(--page-background);
+  background-color: var(--theme-gray);
   padding: 0px 15px;
 }
 
@@ -106,7 +106,7 @@
   /* padding: 3px 5px; */
   
   padding: 3px 0px;
-  color: #0046BE;
+  color: var(--theme-blue);
   background-color: white;
   border: 0px;
 

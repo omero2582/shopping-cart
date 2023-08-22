@@ -17,7 +17,7 @@
 }
 
 .AllItems{
-  background-color:var(--page-background);
+  background-color:var(--theme-gray);
   grid-area: items;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

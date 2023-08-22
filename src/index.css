@@ -2,7 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 :root{
-  --page-background: hsl(0, 0%, 95%);
+  --theme-gray: hsl(0, 0%, 95%);
+  --theme-blue: #0046BE;
+  --theme-blue-hover: hsl(218, 100%, 45%);
+  --theme-yellow: #FFCE00;
+  --theme-yellow-hover:  #FFF200;
+}
+
+a {
+  color: var(--theme-blue);
 }
 
 body {
@@ -38,10 +46,6 @@ code {
 
 button:hover{
   cursor: pointer;
-}
-
-a {
-  color: #0046BE;
 }
 
 #root{

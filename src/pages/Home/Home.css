@@ -1,6 +1,6 @@
 .Home{
   text-align: center;
-  background-color: var(--page-background);
+  background-color: var(--theme-gray);
   display: grid;
   justify-items: center;
   align-content: center;
@@ -17,13 +17,13 @@
   font-size: 1.3rem;
   padding: 10px 15px;
   color: white;
-  background-color: #0046BE;
+  background-color: var(--theme-blue);
   text-decoration: none;
   /* border: 1px solid black; */
 }
 
 .Home a:hover{
-  background-color: hsl(218, 100%, 45%);
+  background-color: var(--theme-blue-hover);
   /* color: #acb9d2; */
 }
 

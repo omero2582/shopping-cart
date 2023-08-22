@@ -6,10 +6,13 @@ import useItem from "../../context/shopContext/useItem";
 import { useCartContext } from "../../context/cartContext/cartContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import StarRatings from "react-star-ratings";
+import Icon from '@mdi/react';
+import { mdiCheckBold } from '@mdi/js';
 
 export default function ItemDetail () {
   const {isLoading: cartLoading, handleAdd} = useCartContext();
   const [quantityBuy, setQuantityBuy] = useState(1);
+  const [isSucessAdded, setIsSucessAdded] = useState(false);
   const sanitizedId = validator.escape(useParams().id);
   const id = Number(sanitizedId);
   
@@ -42,8 +45,10 @@ export default function ItemDetail () {
     setQuantityBuy(Math.max(1, number));
   }
 
-  const addToCart = () => {
-    handleAdd(item, quantityBuy);
+  const addToCart = async () => {
+    setIsSucessAdded(false);
+    await handleAdd(item, quantityBuy);
+    setIsSucessAdded(true);
   }
   return (
     <section className="ItemDetail">
@@ -72,12 +77,15 @@ export default function ItemDetail () {
           {/*maybe extract this input with the state into its own component bc I want to reuse this in the cart page.
             Prob not tho. Have to think about this. I think its the extra restrctions of min=1 and other
             html attributes that I set, that make me want to extract this into a component, since there are a lot of specific 'settings'*/}
-          
-        <button className="buy" onClick={addToCart} disabled={cartLoading}>
-          {cartLoading ?
-          <LoadingSpinner width={17}/>
-            : 'Add to Cart'}
-        </button>
+        <div className="buy-and-checkmark">
+          <button className="buy" onClick={addToCart} disabled={cartLoading}>
+            {cartLoading ?
+            <LoadingSpinner width={17}/>
+              : 'Add to Cart'}
+          </button>
+          { isSucessAdded && 
+            <Icon path={mdiCheckBold} size={1.05} className="checkmark" color={"green"}/>}
+        </div>
         <section className="description-area">
           <h3 className="title">Product Description</h3>
           <p className='description'>{description}</p>

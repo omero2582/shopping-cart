@@ -65,11 +65,21 @@
 }
 
 
-.ItemDetail .details button {
+.ItemDetail .details .buy-and-checkmark {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ItemDetail .details .checkmark{
+  padding-bottom: 2px;
+}
+
+.ItemDetail .details .buy {
   font-size: 1.05rem;
   /* padding: 8px 16px; */
-  margin-top: 3px;
-  background-color: #FFCE00;
+  background-color: var(--theme-yellow);
   border: 0px;
   /**/
 
@@ -77,11 +87,11 @@
   height: 36px;
 }
 
-.ItemDetail .details button:hover:not(:disabled){
-  background-color: #FFF200;
+.ItemDetail .details .buy:hover:not(:disabled){
+  background-color: var(--theme-yellow-hover);
 }
 
-.ItemDetail .details button:disabled{
+.ItemDetail .details .buy:disabled{
   color: rgba(0, 0, 0, 0.6);
 }
 
