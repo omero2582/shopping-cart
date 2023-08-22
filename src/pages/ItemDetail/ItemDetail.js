@@ -5,6 +5,7 @@ import './ItemDetail.css'
 import useItem from "../../context/shopContext/useItem";
 import { useCartContext } from "../../context/cartContext/cartContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import StarRatings from "react-star-ratings";
 
 export default function ItemDetail () {
   const {isLoading: cartLoading, handleAdd} = useCartContext();
@@ -33,7 +34,8 @@ export default function ItemDetail () {
     )
   }
   // const {name, priceTotal ,img, description} = item;
-  const {title, price ,image, description} = item;
+  const {title, price ,image, description, rating} = item;
+  const {rate, count} = rating;
   console.log(item);
   const handleQuantityInput = (e) => {
     const number = (Number(e.target.value));
@@ -49,6 +51,20 @@ export default function ItemDetail () {
       <div className="details">
         <h2 className='name'>{title}</h2>
         <p className='price'>${price.toFixed(2)}</p>
+        <section className='rating-area'>
+          <span className='rating'>{rate}</span>
+          <StarRatings
+            rating={rate}
+            numberOfStars={5}
+            starDimension='20px'
+            starRatedColor='#E78A2E'
+            starEmptyColor='#acb9d2'
+            starSpacing='0px'
+          />
+          <span className='count' title={`${count} ratings`}>
+            {count} ratings
+          </span>
+      </section>
         <div className="buy-area">
           <label htmlFor="quantity">Quantity:</label>
           <input id="quantity" className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>

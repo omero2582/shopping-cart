@@ -15,6 +15,10 @@ const sortItems = (items, sort) => {
       return [...items].sort((a, b) =>  a.title.localeCompare(b.title));
     case 'name-desc':
       return [...items].sort((a, b) =>  b.title.localeCompare(a.title));
+    case 'rating-desc':
+      return [...items].sort((a, b) =>  b.rating.rate - a.rating.rate);
+    case 'rating-asc':
+      return [...items].sort((a, b) =>  a.rating.rate - b.rating.rate);
     case 'price-desc':
       return [...items].sort((a, b) =>  b.price - a.price);
     case 'price-asc':
@@ -120,6 +124,8 @@ function Options({ sort, handleSort , showDescription, toggleDescription }){
         onChange={handleSort}>
           <option value='price-asc'>Price: Low to High</option>
           <option value='price-desc'>Price: High to Low</option>
+          <option value='rating-desc'>Rating: High to Low</option>
+          <option value='rating-asc'>Rating: Low to High</option>
           <option value='name-asc'>Name: A to Z</option>
           <option value='name-desc'>Name: Z to A</option>
         </select>

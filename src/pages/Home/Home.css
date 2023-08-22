@@ -24,6 +24,7 @@
 
 .Home a:hover{
   background-color: hsl(218, 100%, 45%);
+  /* color: #acb9d2; */
 }
 
 .Home .description {

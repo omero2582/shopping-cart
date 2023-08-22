@@ -37,6 +37,7 @@
   align-content: flex-start;
   justify-items: center;
   padding: 20px 10px;
+  padding-bottom: 10px;
   
   /* NEW */
   /* text-overflow: clip; */
@@ -105,6 +106,27 @@
   width: 125px;
   height: 30px;
 } */
+
+.ShopItem .rating-area{
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.ShopItem .rating-area .rating{
+  padding-right: 5px;
+  font-weight: 500;
+}
+
+.ShopItem .rating-area .count{
+  padding-left: 1px;
+}
+
+
+.ShopItem .star-ratings {
+  margin-bottom: -2px;
+}
 
 .Sidebar {
   grid-area: sidebar;
