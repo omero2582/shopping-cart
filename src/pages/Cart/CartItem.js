@@ -3,6 +3,7 @@ import { useCartContext } from "../../context/cartContext/cartContext";
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline } from '@mdi/js';
 import { useNavigate } from "react-router-dom";
+import './CartItem.css'
 
 export function CartItem({item}) {
   const { title, price, total, image, id, description, quantity } = item;
@@ -21,7 +22,7 @@ export function CartItem({item}) {
   }
 
   return (
-    <section className="cart-item">
+    <section className="CartItem">
       <img alt={title} src={image} onClick={() => navigate(`/shop/${id}`)}></img>
       <div className="info">
           <h3 className='title'>
