@@ -23,7 +23,7 @@ export default function ItemDetail () {
   if (isLoading){
     return (
       <section className="ItemDetail">
-        <LoadingSpinner showText sx={{'margin-top': '20px'}}/>
+        <LoadingSpinner showText sx={{'marginTop': '20px'}}/>
       </section>
     )
   }

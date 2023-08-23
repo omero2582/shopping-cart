@@ -150,7 +150,7 @@ function AllItems({ error, isLoading, items, showDescription }) {
     </section>
   )
   if (isLoading) return (
-    <LoadingSpinner showText sx={{'margin-top': '20px'}}/>
+    <LoadingSpinner showText sx={{'marginTop': '20px'}}/>
   )
   
   return (
