@@ -8,11 +8,11 @@ export default function ShopItem ({item, showDescription}) {
   const navigate = useNavigate();
   return (
     <div className="ShopItem">
-      <div className='image-container' title={description} onClick={() => navigate(`/shop/${id}`)}>
+      <div className='image-container' title={title} onClick={() => navigate(`/shop/${id}`)}>
           <img alt={title} src={image} />
       </div>
       <Link to={`/shop/${id}`}>
-        <h3 className='title' title={description}>{title}</h3>
+        <h3 className='title' title={title}>{title}</h3>
       </Link>
       <p className='price'>${price.toFixed(2)}</p>
       {/* <button onClick={() => handleAdd(item, 1)}>Add to Cart</button> */}
