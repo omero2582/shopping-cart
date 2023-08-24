@@ -8,6 +8,7 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import StarRatings from "react-star-ratings";
 import Icon from '@mdi/react';
 import { mdiCheckBold } from '@mdi/js';
+import NumberInput from "../../components/NumberInput/NumberInput";
 
 export default function ItemDetail () {
   const {isLoading: cartLoading, handleAdd} = useCartContext();
@@ -50,6 +51,13 @@ export default function ItemDetail () {
     await handleAdd(item, quantityBuy);
     setIsSucessAdded(true);
   }
+
+  const incrementQuantity = () => setQuantityBuy(quantityBuy + 1);
+  const decrementQuantity = () => {
+    if(quantityBuy > 1) {
+      setQuantityBuy(quantityBuy-1)
+    }
+  }
   return (
     <section className="ItemDetail">
       <img alt={title} src={image}></img>
@@ -70,13 +78,19 @@ export default function ItemDetail () {
             {count} ratings
           </span>
       </section>
-        <div className="buy-area">
+        {/* <div>
           <label htmlFor="quantity">Quantity:</label>
           <input id="quantity" className="quantity" type='number' min={1} step={1} value={quantityBuy} onChange={handleQuantityInput}></input>
-        </div>
-          {/*maybe extract this input with the state into its own component bc I want to reuse this in the cart page.
-            Prob not tho. Have to think about this. I think its the extra restrctions of min=1 and other
-            html attributes that I set, that make me want to extract this into a component, since there are a lot of specific 'settings'*/}
+        </div> */}
+        <NumberInput
+          quantity={quantityBuy}
+          onIncrement={incrementQuantity}
+          onDecrement={decrementQuantity}
+          onChange={handleQuantityInput}
+          sx={{'marginTop': '2.5px'}}
+          // sxInput={{'fontSize': '1.1rem'}}
+          // sxButton={{'height': '26px'}}
+        />
         <div className="buy-and-checkmark">
           <button className="buy" onClick={addToCart} disabled={cartLoading}>
             {cartLoading ?

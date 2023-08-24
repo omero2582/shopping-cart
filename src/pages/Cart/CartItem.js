@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiTrashCanOutline } from '@mdi/js';
 import { useNavigate } from "react-router-dom";
 import './CartItem.css'
+import NumberInput from "../../components/NumberInput/NumberInput";
 
 export function CartItem({item}) {
   const { title, price, total, image, id, description, quantity } = item;
@@ -31,11 +32,18 @@ export function CartItem({item}) {
             </Link>
           </h3>
         <p className='price'>${price.toFixed(2)}</p>
-        <p className="quantity-area">
+        {/* <p className="quantity-area">
           <button className="minus" onClick={decrementQuantity}>-</button>
           <input type="number" value={quantity} min={1} onChange={changeQuantity}></input>
           <button className="plus" onClick={incrementQuantity}>+</button>
-        </p>
+        </p> */}
+        <NumberInput
+          quantity={quantity}
+          onIncrement={incrementQuantity}
+          onDecrement={decrementQuantity}
+          onChange={changeQuantity}
+          sx={{'margin': '8px 2px 2px 2px'}}
+        />
         <button className="remove" onClick={() => handleDelete(id)}>
           {/* <svg width="18" height="18" fill="blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg> */}
           <Icon path={mdiTrashCanOutline} size={0.75} />

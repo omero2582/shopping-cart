@@ -19,11 +19,6 @@
 .navbar .right{
   display: grid;
   grid-auto-flow: column;
-  /* justify-content: space-around;
-  align-items: stretch; */
-}
-
-.navbar ul{
   list-style: none;
   margin: 0px;
   padding: 0px;
