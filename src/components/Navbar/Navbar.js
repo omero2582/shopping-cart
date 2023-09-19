@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { useCartContext } from "../../context/cartContext/cartContext";
 import Icon from '@mdi/react';
 import { mdiCart } from '@mdi/js';
@@ -34,7 +34,7 @@ export function Navbar() {
         <li><Link to="/shop">Shop</Link></li>
         <li>
           <Link to="/checkout" className="cart">
-            <Icon path={mdiCart} size={1.2}/>
+            <Icon path={mdiCart} title={'cart'} size={1.2}/>
             <span className={`${animate ? 'animate' : ''}`}>{numItems}</span>
           </Link>
         </li>

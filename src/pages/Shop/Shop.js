@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import ShopItem from './ShopItem'
-import './Shop.css';
+import './Shop.scss';
 import { useSearchParams } from "react-router-dom";
 import useShop from "../../context/shopContext/useShop";
 import Icon from '@mdi/react';

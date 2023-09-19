@@ -1,5 +1,5 @@
 import React from 'react'
-import './NumberInput.css'
+import './NumberInput.scss'
 
 export default function NumberInput({quantity, onIncrement, onDecrement, onChange, sx, sxButton, sxInput}) {
   return (

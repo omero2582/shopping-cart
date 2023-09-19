@@ -1,0 +1,120 @@
+.ItemDetail .error{
+  background-color: #FFD8D9;
+  font-size: 1.2rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  /* align-self: start; */
+  margin: 0px;
+}
+
+.ItemDetail {
+  /* background-color: aliceblue; */
+  padding-top: 40px;
+  display: grid;
+  justify-content: center;
+  /* align-items: center; */
+  grid-auto-flow: column;
+  /* grid-template-columns: minmax(0, 140px); */
+  /* gap: 20px; */
+  align-content: start;
+
+  .details{
+    display: grid;
+    justify-items: start;
+    max-width: 400px;
+    margin-left: 20px;
+    gap: 5px;
+
+    .price {
+      /* font-size: 1.4rem;
+      font-weight: 600; */
+      font-size: 1.8rem;
+      font-weight: 500;
+      padding: 5px 0px;
+    }
+    
+    .quantity {
+      max-width: 35px;
+      font-size: 1.1rem;
+      /* justify-self: stretch; */
+      text-align: center;
+      margin-left: 5px;
+    }
+    
+    
+    .buy-and-checkmark {
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .checkmark{
+        padding-bottom: 2px;
+      }
+      
+      .buy {
+        font-size: 1.05rem;
+        /* padding: 8px 16px; */
+        background-color: var(--theme-yellow);
+        border: 0px;
+        /**/
+      
+        width: 117px;
+        height: 36px;
+  
+        &:hover:not(:disabled){
+          background-color: var(--theme-yellow-hover);
+        }
+        
+        &:disabled{
+          color: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+  
+  .name{
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+  
+  img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .description-area{
+    margin-top: 15px;
+
+    .title{
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  .rating-area {
+    .rating{
+      padding-right: 5px;
+      font-weight: 500;
+      font-size: 1rem;
+     }
+    .count{
+       padding-left: 8px;
+     }
+  }
+}
+
+
+@media (max-width: 600px){
+  .ItemDetail {
+    grid-auto-flow: row;
+    padding-top: 20px;
+
+    img{
+      justify-self: center;
+      padding-bottom: 10px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import validator from "validator";
-import './ItemDetail.css'
+import './ItemDetail.scss'
 import useItem from "../../context/shopContext/useItem";
 import { useCartContext } from "../../context/cartContext/cartContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";

@@ -1,5 +1,5 @@
 import React from 'react'
-import './LoadingSpinner.css'
+import './LoadingSpinner.scss'
 
 export default function LoadingSpinner({showText, width = 40, sx}) {
   return (

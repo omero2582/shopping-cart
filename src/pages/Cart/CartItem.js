@@ -3,7 +3,7 @@ import { useCartContext } from "../../context/cartContext/cartContext";
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline } from '@mdi/js';
 import { useNavigate } from "react-router-dom";
-import './CartItem.css'
+import './CartItem.scss'
 import NumberInput from "../../components/NumberInput/NumberInput";
 
 export function CartItem({item}) {
@@ -52,7 +52,8 @@ export function CartItem({item}) {
       </div>
       <p className="total-container">
         <span className="total-text">Total: </span>
-        <strong className="total">${total.toFixed(2)}</strong></p>
+        <strong className="total">${total.toFixed(2)}</strong>
+      </p>
     </section>
     //{JSON.stringify(item, null, 2)}
   )

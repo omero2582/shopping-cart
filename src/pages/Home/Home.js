@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Home.css'
+import './Home.scss'
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 export function Home() {
   return(

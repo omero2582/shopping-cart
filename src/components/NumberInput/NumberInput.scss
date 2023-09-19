@@ -1,0 +1,52 @@
+ .NumberInput{
+  margin-top: 0px;
+  display: flex;
+  gap: 0px;
+  
+  button{
+    font-size: 1.3rem;
+    width: 40px;
+    height: 24px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--theme-blue);
+    background-color: hsl(0, 0%, 92%);
+
+    &:hover{
+      background-color: var(--theme-blue-hover);
+      color: white;
+    }
+  }
+
+  input{
+    font-size: 1rem;
+    width: 42px;
+    text-align: center;
+    margin: 0px;
+    /* border: 0px */
+
+    /*disabling increment and decrement on number input*/
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+}
+
+
+
+

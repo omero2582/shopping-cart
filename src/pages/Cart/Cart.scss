@@ -5,32 +5,35 @@
   align-content: start;
   background-color: var(--theme-gray);
   padding: 0px 15px;
+
+  .empty-text{
+    margin: 16px 0px;
+  }
+  
+  
+  h1 {
+    margin: 10px 0px 0px;
+  }
+  
+  /* .cart-items{
+    display: grid;
+    justify-items: center;
+  } */
+  
+  .subtotal {
+    padding: 12px;
+    justify-self: end;
+  }
+
+  .cart-items .item-total-title{
+    text-align: end;
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
 }
 
-.Cart .empty-text{
-  margin: 16px 0px;
-}
 
 
-.Cart h1 {
-  margin: 10px 0px 0px;
-}
-
-/* .cart-items{
-  display: grid;
-  justify-items: center;
-} */
-
-.Cart .subtotal {
-  padding: 12px;
-  justify-self: end;
-}
-
-.cart-items .item-total-title{
-  text-align: end;
-  padding-right: 10px;
-  padding-bottom: 5px;
-}
 
 
 

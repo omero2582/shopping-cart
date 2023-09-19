@@ -1,0 +1,92 @@
+:root {
+  --navbar-color: black;
+  --navbar-hover: hsl(0, 0%, 20%);
+  --navbar-text: white;
+}
+
+.navbar{
+  background-color: var(--navbar-color);
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-around;
+
+  .logo > *{
+    padding: 14px 8px;
+    /*h1's normal margin top and bottom is 27px*/
+  }
+  
+  .right{
+    display: grid;
+    grid-auto-flow: column;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+     a {
+        /* width: 120px; */
+        padding: 0px 30px;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      &:hover{
+        background-color:var(--navbar-hover);
+        cursor: pointer;
+      }
+    }
+  }
+  
+  a {   /*menu links + logo*/
+    text-decoration: none;
+    color: var(--navbar-text);
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    box-sizing: border-box;
+  }
+  
+  .cart{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 5px;
+
+    .animate {
+      transition: font-size 0.6s ease-out;
+      animation: bounce 0.6s;
+      color: var(--theme-yellow-hover);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    55% {
+      transform: scale(1.6);
+    }
+  }
+}
+
+
+@media (max-width: 800px) {
+  .navbar {
+    grid-auto-flow: row;
+    justify-content: stretch;
+    
+    position: sticky;
+    top: -50px; /*height of the title*/
+    z-index: 1;
+
+    .logo * {
+      padding: 10px 8px
+    }
+
+    .right li a{
+      padding: 10px 0px;
+      font-size: 1.25rem;
+    }
+  }
+}
